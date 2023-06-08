@@ -54,7 +54,9 @@ Prometheus-based monitoring system. The following components are included:
    - `~/tmp/monitor/prometheus/alertmanager/alertmanager.yml`
    - `~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml`
 
-4. (Optional) Add Prometheus alert rules. For example, using the alert rules in the [monitor](https://github.com/rea1shane/monitor) repository:
+4. (Optional) Add Prometheus alert rules. The alert rule files should be stored in the `~/tmp/monitor/resources/rules` directory.
+
+   For example, using the alert rules in the [monitor](https://github.com/rea1shane/monitor) repository:
 
    ```shell
    git clone https://github.com/rea1shane/monitor.git ~/tmp/monitor/resources
