@@ -72,19 +72,34 @@ Prometheus-based monitoring system. The following components are included:
 
    1. Edit `docker-compose.yaml`:
 
-      ```yaml
-      prometheus:
-        volumes:
-          - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-          - alerts:/etc/prometheus/alerts
+      ```diff
+        ...
+
+        services:
+          prometheus:
+
+            ...
+
+            volumes:
+              - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      +       - alerts:/etc/prometheus/alerts
+
+        ...
       ```
 
    2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
 
-      ```yaml
-      rule_files:
-        - /etc/prometheus/alerts/*.yml
-        - /etc/prometheus/alerts/*.yaml
+      ```diff
+        ...
+
+        # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+        rule_files:
+      -   # - "first_rules.yml"
+      -   # - "second_rules.yml"
+      +   - /etc/prometheus/alerts/*.yml
+      +   - /etc/prometheus/alerts/*.yaml
+
+        ...
       ```
 
 ### Run
