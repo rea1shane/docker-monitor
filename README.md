@@ -13,7 +13,7 @@ Prometheus-based monitoring system. The following components are included:
 
 ### Preparation
 
-1. Download template configuration files:
+1. Download template of configuration files:
 
    ```shell
    # Make workspace
