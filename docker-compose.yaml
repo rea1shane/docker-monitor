@@ -10,8 +10,8 @@ services:
         "--web.enable-lifecycle"
       ]
     volumes:
-      - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ~/tmp/monitor/resources/rules:/etc/prometheus/rules
+      - ~/tmp/docker-monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ~/tmp/docker-monitor/resources/rules:/etc/prometheus/rules
     ports:
       - 9090:9090
 
@@ -26,7 +26,7 @@ services:
     image: quay.io/prometheus/blackbox-exporter:latest
     command: [ "--config.file=/etc/blackbox_exporter/blackbox.yml" ]
     volumes:
-      - ~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+      - ~/tmp/docker-monitor/prometheus/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
     ports:
       - 9115:9115
 
@@ -41,7 +41,7 @@ services:
     image: quay.io/prometheus/alertmanager:latest
     command: [ "--config.file=/etc/alertmanager/alertmanager.yml" ]
     volumes:
-      - ~/tmp/monitor/prometheus/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ~/tmp/docker-monitor/prometheus/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
       - 9093:9093
 
