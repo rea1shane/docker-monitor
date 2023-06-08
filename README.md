@@ -48,7 +48,7 @@ Prometheus-based monitoring system. The following components are included:
          - targets: ["blackbox_exporter:9115"]
    ```
 
-3. (Optional) Custom configuration files. Edit following files if you like:
+3. (Optional) Custom configuration files. Edit following files if you want:
 
    - `~/tmp/monitor/prometheus/prometheus.yml`
    - `~/tmp/monitor/prometheus/alertmanager/alertmanager.yml`
