@@ -26,7 +26,7 @@ Prometheus-based monitoring system. The following components are included:
    wget https://raw.githubusercontent.com/prometheus/blackbox_exporter/master/blackbox.yml -O ~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml
    ```
 
-2. Edit `~/tmp/monitor/prometheus/prometheus.yml`：
+2. Edit `~/tmp/monitor/prometheus/prometheus.yml`:
 
    ```yaml
    alerting:
@@ -48,15 +48,19 @@ Prometheus-based monitoring system. The following components are included:
          - targets: ["blackbox_exporter:9115"]
    ```
 
-#### Add Prometheus alert rules (Optional)
+3. (Optional) Custom configuration files. Edit following files if you like:
 
-1. Add alert rules. For example, using the alert rules in the [monitor](https://github.com/rea1shane/monitor) repository:
+   - `~/tmp/monitor/prometheus/prometheus.yml`
+   - `~/tmp/monitor/prometheus/alertmanager/alertmanager.yml`
+   - `~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml`
+
+4. (Optional) Add Prometheus alert rules. For example, using the alert rules in the [monitor](https://github.com/rea1shane/monitor) repository:
 
    ```shell
    git clone https://github.com/rea1shane/monitor.git ~/tmp/monitor/resources
    ```
 
-2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
+   Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
 
    ```yaml
    rule_files:
@@ -64,29 +68,10 @@ Prometheus-based monitoring system. The following components are included:
      - /etc/prometheus/rules/*.yaml
    ```
 
-#### Custom configuration files (Optional)
-
-Edit following files if you like:
-
-```
-~/tmp/monitor/prometheus/prometheus.yml
-~/tmp/monitor/prometheus/alertmanager/alertmanager.yml
-~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml
-```
-
-### Start servers
+### Run
 
 Just run:
 
 ```shell
 docker-compose up
 ```
-
-Components port list:
-
-- Prometheus: `9090`
-- Pushgateway: `9091`
-- Blackbox exporter: `9115`
-- Grafana: `3000`
-- Alertmanager: `9093`
-- karma: `8080`
