@@ -28,24 +28,38 @@ Prometheus-based monitoring system. The following components are included:
 
 2. Edit `~/tmp/monitor/prometheus/prometheus.yml`:
 
-   ```yaml
-   alerting:
-     alertmanagers:
-       - static_configs:
-           - targets:
-               # Specify Alertmanager
-               - alertmanager:9093
+   ```diff
+     ...
 
-   scrape_configs:
-     # Monitoring Pushgateway
-     - job_name: "pushgateway"
-       static_configs:
-         - targets: ["pushgateway:9091"]
+     # Alertmanager configuration
+     alerting:
+       alertmanagers:
+         - static_configs:
+             - targets:
+   -           # - alertmanager:9093
+   +           - alertmanager:9093
 
-     # Monitoring Blackbox exporter
-     - job_name: "blackbox_exporter"
-       static_configs:
-         - targets: ["blackbox_exporter:9115"]
+     ...
+
+     # A scrape configuration containing exactly one endpoint to scrape:
+     # Here it's Prometheus itself.
+     scrape_configs:
+       # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+       - job_name: "prometheus"
+
+         # metrics_path defaults to '/metrics'
+         # scheme defaults to 'http'.
+
+         static_configs:
+           - targets: ["localhost:9090"]
+   +
+   +   - job_name: "pushgateway"
+   +     static_configs:
+   +       - targets: ["pushgateway:9091"]
+   +
+   +   - job_name: "blackbox_exporter"
+   +     static_configs:
+   +       - targets: ["blackbox_exporter:9115"]
    ```
 
 3. (Optional) Custom configuration files. Edit following files if you want:
