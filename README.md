@@ -13,14 +13,14 @@ Prometheus-based monitoring system. The following components are included:
 
 ### Preparation
 
-1. Download template configuration file:
+1. Download template configuration files:
 
    ```shell
    # Make workspace
    mkdir -p ~/tmp/monitor/prometheus/alertmanager/
    mkdir -p ~/tmp/monitor/prometheus/blackbox_exporter/
 
-   # Download template configuration file
+   # Download template configuration files
    wget https://raw.githubusercontent.com/prometheus/prometheus/main/documentation/examples/prometheus.yml -O ~/tmp/monitor/prometheus/prometheus.yml
    wget https://raw.githubusercontent.com/prometheus/alertmanager/main/examples/ha/alertmanager.yml -O ~/tmp/monitor/prometheus/alertmanager/alertmanager.yml
    wget https://raw.githubusercontent.com/prometheus/blackbox_exporter/master/blackbox.yml -O ~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml
