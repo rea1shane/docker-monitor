@@ -1,0 +1,20 @@
+groups:
+  - name: Node
+    rules:
+      - alert: High node load
+        expr: node_load15 / count without(cpu, mode) (node_cpu_seconds_total{mode="idle"}) * 100 > 100
+        for: 5m
+        labels:
+          level: critical
+        annotations:
+          current: Average load_15 per core is {{ $value }}%
+          labels: instance="{{ $labels.instance }}"
+
+      - alert: High disk usage
+        expr: (1 - node_filesystem_free_bytes / node_filesystem_size_bytes) * 100 > 85
+        for: 15m
+        labels:
+          level: warning
+        annotations:
+          current: "{{ $value }}% usage"
+          labels: instance="{{ $labels.instance }}", device="{{ $labels.device }}", fstype="{{ $labels.fstype }}", mountpoint="{{ $labels.mountpoint }}"

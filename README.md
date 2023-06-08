@@ -1,4 +1,4 @@
-# Docker monitor
+# Monitor
 
 Prometheus-based monitoring system. The following components are included:
 

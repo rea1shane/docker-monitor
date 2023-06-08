@@ -1,0 +1,10 @@
+groups:
+  - name: Probe
+    rules:
+      - alert: Probe failure
+        expr: probe_success == 0
+        for: 5m
+        labels:
+          level: critical
+        annotations:
+          labels: job="{{ $labels.job }}", target="{{ $labels.target }}"

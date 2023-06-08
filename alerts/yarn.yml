@@ -1,0 +1,10 @@
+groups:
+  - name: YARN Job
+    rules:
+      - alert: YARN App Failed
+        expr: round(increase(Hadoop_ResourceManager_AppsFailed{q0="root", q1=""}[1d])) > 0
+        for: 0m
+        labels:
+          level: warning
+        annotations:
+          current: "{{ $value }} job(s) failed"
