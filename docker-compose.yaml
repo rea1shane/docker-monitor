@@ -11,7 +11,6 @@ services:
       ]
     volumes:
       - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ~/tmp/monitor/resources/rules:/etc/prometheus/rules
     ports:
       - 9090:9090
 

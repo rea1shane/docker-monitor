@@ -54,21 +54,24 @@ Prometheus-based monitoring system. The following components are included:
    - `~/tmp/monitor/prometheus/alertmanager/alertmanager.yml`
    - `~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml`
 
-4. (Optional) Add Prometheus alert rules. The alert rule files should be stored in the `~/tmp/monitor/resources/rules` directory.
+4. (Optional) Load Prometheus alerts. For example, using the alert files in the [alerts](https://github.com/rea1shane/monitor/tree/main/alerts) folder:
 
-   For example, using the alert rules in the [monitor](https://github.com/rea1shane/monitor) repository:
+   1. Edit `docker-compose.yaml`:
 
-   ```shell
-   git clone https://github.com/rea1shane/monitor.git ~/tmp/monitor/resources
-   ```
+      ```yaml
+      prometheus:
+        volumes:
+          - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+          - alerts:/etc/prometheus/alerts
+      ```
 
-   Then edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
+   2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
 
-   ```yaml
-   rule_files:
-     - /etc/prometheus/rules/*.yml
-     - /etc/prometheus/rules/*.yaml
-   ```
+      ```yaml
+      rule_files:
+        - /etc/prometheus/alerts/*.yml
+        - /etc/prometheus/alerts/*.yaml
+      ```
 
 ### Run
 
