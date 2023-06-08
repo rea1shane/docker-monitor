@@ -82,7 +82,7 @@ Prometheus-based monitoring system. The following components are included:
 
             volumes:
               - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      +       - alerts:/etc/prometheus/alerts
+      +       - ./alerts:/etc/prometheus/alerts
 
         ...
       ```
