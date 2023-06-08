@@ -60,7 +60,7 @@ Prometheus-based monitoring system. The following components are included:
    git clone https://github.com/rea1shane/monitor.git ~/tmp/monitor/resources
    ```
 
-   Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
+   Then edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
 
    ```yaml
    rule_files:
