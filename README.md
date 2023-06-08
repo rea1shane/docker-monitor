@@ -9,9 +9,9 @@ Prometheus-based monitoring system. The following components are included:
 - [Alertmanager](https://github.com/prometheus/alertmanager)
 - [karma](https://github.com/prymitive/karma)
 
-## Preparation
+## Usage
 
-### Necessary
+### Preparation
 
 1. Download template configuration file:
 
@@ -48,9 +48,7 @@ Prometheus-based monitoring system. The following components are included:
          - targets: ["blackbox_exporter:9115"]
    ```
 
-### Optional
-
-#### Add Prometheus alert rules
+#### Add Prometheus alert rules (Optional)
 
 1. Add alert rules. For example, using the alert rules in the [monitor](https://github.com/rea1shane/monitor) repository:
 
@@ -65,3 +63,30 @@ Prometheus-based monitoring system. The following components are included:
      - /etc/prometheus/rules/*.yml
      - /etc/prometheus/rules/*.yaml
    ```
+
+#### Custom configuration files (Optional)
+
+Edit following files if you like:
+
+```
+~/tmp/monitor/prometheus/prometheus.yml
+~/tmp/monitor/prometheus/alertmanager/alertmanager.yml
+~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml
+```
+
+### Start servers
+
+Just run:
+
+```shell
+docker-compose up
+```
+
+Components port list:
+
+- Prometheus: `9090`
+- Pushgateway: `9091`
+- Blackbox exporter: `9115`
+- Grafana: `3000`
+- Alertmanager: `9093`
+- karma: `8080`
