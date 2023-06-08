@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--web.enable-lifecycle"
+      ]
+    volumes:
+      - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ~/tmp/monitor/resources/rules:/etc/prometheus/rules
+    ports:
+      - 9090:9090
+
+  pushgateway:
+    container_name: pushgateway
+    image: prom/pushgateway:latest
+    ports:
+      - 9091:9091
+
+  blackbox_exporter:
+    container_name: blackbox_exporter
+    image: quay.io/prometheus/blackbox-exporter:latest
+    command: [ "--config.file=/etc/blackbox_exporter/blackbox.yml" ]
+    volumes:
+      - ~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+    ports:
+      - 9115:9115
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss:latest
+    ports:
+      - 3000:3000
+
+  alertmanager:
+    container_name: alertmanager
+    image: quay.io/prometheus/alertmanager:latest
+    command: [ "--config.file=/etc/alertmanager/alertmanager.yml" ]
+    volumes:
+      - ~/tmp/monitor/prometheus/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - 9093:9093
+
+  karma:
+    container_name: karma
+    image: ghcr.io/prymitive/karma:latest
+    environment:
+      - ALERTMANAGER_URI=http://alertmanager:9093
+    ports:
+      - 8080:8080
