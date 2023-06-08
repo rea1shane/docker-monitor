@@ -1,10 +1,10 @@
 groups:
-  - name: YARN Job
+  - name: YARN app
     rules:
-      - alert: YARN App Failed
+      - alert: YARN app failed
         expr: round(increase(Hadoop_ResourceManager_AppsFailed{q0="root", q1=""}[1d])) > 0
         for: 0m
         labels:
           level: warning
         annotations:
-          current: "{{ $value }} job(s) failed"
+          current: "{{ $value }} job(s) failed in past 1 day"

@@ -1,7 +1,7 @@
 groups:
   - name: Probe
     rules:
-      - alert: Probe failure
+      - alert: Probe failed
         expr: probe_success == 0
         for: 5m
         labels:

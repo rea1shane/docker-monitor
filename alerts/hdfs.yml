@@ -9,7 +9,7 @@ groups:
         annotations:
           current: "{{ $value }} DataNode(s) down"
 
-  - name: HDFS Storage
+  - name: HDFS storage
     rules:
       - alert: HDFS block corrupted
         expr: max(Hadoop_NameNode_CorruptBlocks) > 0
