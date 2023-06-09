@@ -28,79 +28,48 @@ Prometheus-based monitoring system. The following components are included:
 
 2. Edit `~/tmp/monitor/prometheus/prometheus.yml`:
 
-   ```diff
-     ...
+   ```yaml
+   alerting:
+     alertmanagers:
+       - static_configs:
+           - targets:
+               - alertmanager:9093
 
-     # Alertmanager configuration
-     alerting:
-       alertmanagers:
-         - static_configs:
-             - targets:
-   -           # - alertmanager:9093
-   +           - alertmanager:9093
+   scrape_configs:
+     - job_name: "pushgateway"
+       static_configs:
+         - targets: ["pushgateway:9091"]
 
-     ...
-
-     # A scrape configuration containing exactly one endpoint to scrape:
-     # Here it's Prometheus itself.
-     scrape_configs:
-       # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-       - job_name: "prometheus"
-
-         # metrics_path defaults to '/metrics'
-         # scheme defaults to 'http'.
-
-         static_configs:
-           - targets: ["localhost:9090"]
-   +
-   +   - job_name: "pushgateway"
-   +     static_configs:
-   +       - targets: ["pushgateway:9091"]
-   +
-   +   - job_name: "blackbox_exporter"
-   +     static_configs:
-   +       - targets: ["blackbox_exporter:9115"]
+     - job_name: "blackbox_exporter"
+       static_configs:
+         - targets: ["blackbox_exporter:9115"]
    ```
 
-3. (Optional) Custom configuration files. Edit following files if you want:
-
-   - `~/tmp/monitor/prometheus/prometheus.yml`
-   - `~/tmp/monitor/prometheus/alertmanager/alertmanager.yml`
-   - `~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml`
-
-4. (Optional) Load Prometheus alerts. For example, using the alert files in the [alerts](https://github.com/rea1shane/monitor/tree/main/alerts) folder:
+3. (Optional) Load alerts in the [alerts](https://github.com/rea1shane/monitor/tree/main/alerts) folder:
 
    1. Edit `docker-compose.yaml`:
 
-      ```diff
-        ...
-
-        services:
-          prometheus:
-
-            ...
-
-            volumes:
-              - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      +       - ./alerts:/etc/prometheus/alerts
-
-        ...
+      ```yaml
+      services:
+        prometheus:
+          volumes:
+            - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+            - ./alerts:/etc/prometheus/alerts
       ```
 
    2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
 
-      ```diff
-        ...
-
-        # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-        rule_files:
-      -   # - "first_rules.yml"
-      -   # - "second_rules.yml"
-      +   - /etc/prometheus/alerts/*.yml
-      +   - /etc/prometheus/alerts/*.yaml
-
-        ...
+      ```yaml
+      rule_files:
+        - /etc/prometheus/alerts/*.yml
+        - /etc/prometheus/alerts/*.yaml
       ```
+
+4. (Optional) Custom configuration files. Edit following files if you want:
+
+   - `~/tmp/monitor/prometheus/prometheus.yml`
+   - `~/tmp/monitor/prometheus/alertmanager/alertmanager.yml`
+   - `~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml`
 
 ### Run
 
