@@ -13,20 +13,27 @@ Prometheus-based monitoring system. The following components are included:
 
 ### Preparation
 
+1. Designate a workspace:
+
+   ```shell
+   # e.g.
+   export MONITOR_WORKSPACE=~/tmp/monitor
+   ```
+
 1. Download template of configuration files:
 
    ```shell
-   # Make workspace
-   mkdir -p ~/tmp/monitor/prometheus/alertmanager/
-   mkdir -p ~/tmp/monitor/prometheus/blackbox_exporter/
+   # Setting up workspace
+   mkdir -p $MONITOR_WORKSPACE/prometheus/alertmanager/
+   mkdir -p $MONITOR_WORKSPACE/prometheus/blackbox_exporter/
 
    # Download template configuration files
-   wget https://raw.githubusercontent.com/prometheus/prometheus/main/documentation/examples/prometheus.yml -O ~/tmp/monitor/prometheus/prometheus.yml
-   wget https://raw.githubusercontent.com/prometheus/alertmanager/main/examples/ha/alertmanager.yml -O ~/tmp/monitor/prometheus/alertmanager/alertmanager.yml
-   wget https://raw.githubusercontent.com/prometheus/blackbox_exporter/master/blackbox.yml -O ~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml
+   wget https://raw.githubusercontent.com/prometheus/prometheus/main/documentation/examples/prometheus.yml -O $MONITOR_WORKSPACE/prometheus/prometheus.yml
+   wget https://raw.githubusercontent.com/prometheus/alertmanager/main/examples/ha/alertmanager.yml -O $MONITOR_WORKSPACE/prometheus/alertmanager/alertmanager.yml
+   wget https://raw.githubusercontent.com/prometheus/blackbox_exporter/master/blackbox.yml -O $MONITOR_WORKSPACE/prometheus/blackbox_exporter/blackbox.yml
    ```
 
-2. Edit `~/tmp/monitor/prometheus/prometheus.yml`:
+1. Edit `$MONITOR_WORKSPACE/prometheus/prometheus.yml`:
 
    ```yaml
    alerting:
@@ -45,7 +52,7 @@ Prometheus-based monitoring system. The following components are included:
          - targets: ["blackbox_exporter:9115"]
    ```
 
-3. (Optional) Load rules in the [rules](https://github.com/rea1shane/monitor/tree/main/rules) folder:
+1. (Optional) Load rules in the [rules](https://github.com/rea1shane/monitor/tree/main/rules) folder:
 
    1. Edit `docker-compose.yaml`:
 
@@ -53,11 +60,11 @@ Prometheus-based monitoring system. The following components are included:
       services:
         prometheus:
           volumes:
-            - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+            - $MONITOR_WORKSPACE/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
             - ./rules:/etc/prometheus/rules
       ```
 
-   2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load rules:
+   1. Edit `$MONITOR_WORKSPACE/prometheus/prometheus.yml`, make Prometheus load rules:
 
       ```yaml
       rule_files:
@@ -65,11 +72,11 @@ Prometheus-based monitoring system. The following components are included:
         - /etc/prometheus/rules/*.yaml
       ```
 
-4. (Optional) Custom configuration files. Edit following files if you want:
+1. (Optional) Custom configuration files. Edit following files if you want:
 
-   - `~/tmp/monitor/prometheus/prometheus.yml`
-   - `~/tmp/monitor/prometheus/alertmanager/alertmanager.yml`
-   - `~/tmp/monitor/prometheus/blackbox_exporter/blackbox.yml`
+   - `$MONITOR_WORKSPACE/prometheus/prometheus.yml`
+   - `$MONITOR_WORKSPACE/prometheus/alertmanager/alertmanager.yml`
+   - `$MONITOR_WORKSPACE/prometheus/blackbox_exporter/blackbox.yml`
 
 ### Run
 
