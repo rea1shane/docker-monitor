@@ -23,7 +23,7 @@ Prometheus-based monitoring system. The following components are included:
 1. Download template of configuration files:
 
    ```shell
-   # Set up workspace
+   # Make workspace
    mkdir -p $MONITOR_WORKSPACE/prometheus/alertmanager/
    mkdir -p $MONITOR_WORKSPACE/prometheus/blackbox_exporter/
 
