@@ -57,7 +57,7 @@ Prometheus-based monitoring system. The following components are included:
             - ./rules:/etc/prometheus/rules
       ```
 
-   2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
+   2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load rules:
 
       ```yaml
       rule_files:
