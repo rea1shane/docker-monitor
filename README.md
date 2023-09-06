@@ -45,7 +45,7 @@ Prometheus-based monitoring system. The following components are included:
          - targets: ["blackbox_exporter:9115"]
    ```
 
-3. (Optional) Load alerts in the [alerts](https://github.com/rea1shane/monitor/tree/main/alerts) folder:
+3. (Optional) Load rules in the [rules](https://github.com/rea1shane/monitor/tree/main/rules) folder:
 
    1. Edit `docker-compose.yaml`:
 
@@ -54,15 +54,15 @@ Prometheus-based monitoring system. The following components are included:
         prometheus:
           volumes:
             - ~/tmp/monitor/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-            - ./alerts:/etc/prometheus/alerts
+            - ./rules:/etc/prometheus/rules
       ```
 
    2. Edit `~/tmp/monitor/prometheus/prometheus.yml`, make Prometheus load alert rules:
 
       ```yaml
       rule_files:
-        - /etc/prometheus/alerts/*.yml
-        - /etc/prometheus/alerts/*.yaml
+        - /etc/prometheus/rules/*.yml
+        - /etc/prometheus/rules/*.yaml
       ```
 
 4. (Optional) Custom configuration files. Edit following files if you want:
