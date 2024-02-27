@@ -1,7 +1,7 @@
 groups:
   - name: Prometheus
     rules:
-      - alert: Exporter down
+      - alert: Service down
         expr: up == 0
         for: 5m
         labels:
