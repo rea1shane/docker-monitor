@@ -25,7 +25,7 @@ services:
     image: quay.io/prometheus/blackbox-exporter:latest
     command: [ "--config.file=/etc/blackbox_exporter/blackbox.yml" ]
     volumes:
-      - $MONITOR_WORKSPACE/prometheus/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+      - $MONITOR_WORKSPACE/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
     ports:
       - 9115:9115
 
@@ -40,7 +40,7 @@ services:
     image: quay.io/prometheus/alertmanager:latest
     command: [ "--config.file=/etc/alertmanager/alertmanager.yml" ]
     volumes:
-      - $MONITOR_WORKSPACE/prometheus/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - $MONITOR_WORKSPACE/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
       - 9093:9093
 
