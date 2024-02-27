@@ -29,7 +29,6 @@ Prometheus-based monitoring system. The following components are included:
 1. Download configuration templates:
 
    ```shell
-   # Download template configuration files
    wget https://raw.githubusercontent.com/prometheus/prometheus/main/documentation/examples/prometheus.yml -O $MONITOR_WORKSPACE/prometheus/prometheus.yml
    wget https://raw.githubusercontent.com/prometheus/alertmanager/main/examples/ha/alertmanager.yml -O $MONITOR_WORKSPACE/alertmanager/alertmanager.yml
    wget https://raw.githubusercontent.com/prometheus/blackbox_exporter/master/blackbox.yml -O $MONITOR_WORKSPACE/blackbox_exporter/blackbox.yml
@@ -43,7 +42,9 @@ Prometheus-based monitoring system. The following components are included:
        - static_configs:
            - targets:
                - alertmanager:9093
+   ```
 
+   ```yaml
    scrape_configs:
      - job_name: "prometheus"
        static_configs:
