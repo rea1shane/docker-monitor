@@ -24,6 +24,7 @@ Prometheus-based monitoring system. The following components are included:
    mkdir -p $MONITOR_WORKSPACE/prometheus/
    mkdir -p $MONITOR_WORKSPACE/alertmanager/
    mkdir -p $MONITOR_WORKSPACE/blackbox_exporter/
+   mkdir -p $MONITOR_WORKSPACE/grafana/
    ```
 
 1. Download configuration templates:
@@ -32,6 +33,7 @@ Prometheus-based monitoring system. The following components are included:
    wget https://raw.githubusercontent.com/prometheus/prometheus/main/documentation/examples/prometheus.yml -O $MONITOR_WORKSPACE/prometheus/prometheus.yml
    wget https://raw.githubusercontent.com/prometheus/alertmanager/main/examples/ha/alertmanager.yml -O $MONITOR_WORKSPACE/alertmanager/alertmanager.yml
    wget https://raw.githubusercontent.com/prometheus/blackbox_exporter/master/blackbox.yml -O $MONITOR_WORKSPACE/blackbox_exporter/blackbox.yml
+   wget https://raw.githubusercontent.com/grafana/grafana/main/conf/sample.ini -O $MONITOR_WORKSPACE/grafana/grafana.ini
    ```
 
 1. Edit `$MONITOR_WORKSPACE/prometheus/prometheus.yml`:
@@ -96,6 +98,7 @@ Prometheus-based monitoring system. The following components are included:
    - `$MONITOR_WORKSPACE/prometheus/prometheus.yml`
    - `$MONITOR_WORKSPACE/alertmanager/alertmanager.yml`
    - `$MONITOR_WORKSPACE/blackbox_exporter/blackbox.yml`
+   - `$MONITOR_WORKSPACE/grafana/grafana.ini`
 
 ### Run
 
@@ -104,3 +107,12 @@ Just run:
 ```shell
 docker-compose up
 ```
+
+> [!IMPORTANT]
+>
+> If you are in a shell environment without the `MONITOR_WORKSPACE` variable, you need to re-export it first.
+>
+> ```shell
+> # Set the same path as in the preparation session.
+> export MONITOR_WORKSPACE=~/tmp/monitor
+> ```
