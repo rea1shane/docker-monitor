@@ -116,3 +116,14 @@ docker-compose up
 > # Set the same path as in the preparation session.
 > export MONITOR_WORKSPACE=~/tmp/monitor
 > ```
+
+### Dashboards
+
+Here are some shared dashboards:
+
+- [Prometheus 2.0 Overview | Grafana Labs](https://grafana.com/grafana/dashboards/3662-prometheus-2-0-overview/)
+- [Blackbox Exporter (HTTP prober) | Grafana Labs](https://grafana.com/grafana/dashboards/13659-blackbox-exporter-http-prober/)
+- [Grafana Internals | Grafana Labs](https://grafana.com/grafana/dashboards/3590-grafana-internals/)
+- [Alertmanager | Grafana Labs](https://grafana.com/grafana/dashboards/9578-alertmanager/)
+
+More shared dashboards: [Dashboards | Grafana Labs](https://grafana.com/grafana/dashboards/)
