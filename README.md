@@ -1,6 +1,6 @@
 # Monitor
 
-Prometheus-based monitoring system. The following components are included:
+Blueprint for Prometheus-based monitoring system. The following components are included:
 
 - [Prometheus - The Prometheus monitoring system and time series database.](https://github.com/prometheus/prometheus)
 - [Pushgateway - Push acceptor for ephemeral and batch jobs.](https://github.com/prometheus/pushgateway)
