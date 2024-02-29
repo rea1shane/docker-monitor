@@ -2,12 +2,12 @@
 
 Prometheus-based monitoring system. The following components are included:
 
-- [Prometheus](https://github.com/prometheus/prometheus)
-- [Pushgateway](https://github.com/prometheus/pushgateway)
-- [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)
-- [Grafana](https://github.com/grafana/grafana)
-- [Alertmanager](https://github.com/prometheus/alertmanager)
-- [karma](https://github.com/prymitive/karma)
+- [Prometheus - The Prometheus monitoring system and time series database.](https://github.com/prometheus/prometheus)
+- [Pushgateway - Push acceptor for ephemeral and batch jobs.](https://github.com/prometheus/pushgateway)
+- [Blackbox exporter - Blackbox prober exporter.](https://github.com/prometheus/blackbox_exporter)
+- [Grafana - The open and composable observability and data visualization platform.](https://github.com/grafana/grafana)
+- [Alertmanager - Prometheus Alertmanager.](https://github.com/prometheus/alertmanager)
+- [karma - Alert dashboard for Prometheus Alertmanager.](https://github.com/prymitive/karma)
 
 ## Usage
 
