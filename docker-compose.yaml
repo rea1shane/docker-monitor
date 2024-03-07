@@ -11,12 +11,14 @@ services:
       - $MONITOR_WORKSPACE/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090
+    restart: unless-stopped
 
   pushgateway:
     container_name: pushgateway
     image: prom/pushgateway:latest
     ports:
       - 9091:9091
+    restart: unless-stopped
 
   blackbox_exporter:
     container_name: blackbox_exporter
@@ -27,6 +29,7 @@ services:
       - $MONITOR_WORKSPACE/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
     ports:
       - 9115:9115
+    restart: unless-stopped
 
   grafana:
     container_name: grafana
@@ -37,6 +40,7 @@ services:
       - $MONITOR_WORKSPACE/grafana/grafana.ini:/etc/grafana/grafana.ini
     ports:
       - 3000:3000
+    restart: unless-stopped
 
   alertmanager:
     container_name: alertmanager
@@ -47,6 +51,7 @@ services:
       - $MONITOR_WORKSPACE/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
       - 9093:9093
+    restart: unless-stopped
 
   karma:
     container_name: karma
@@ -55,3 +60,4 @@ services:
       - ALERTMANAGER_URI=http://alertmanager:9093
     ports:
       - 8080:8080
+    restart: unless-stopped
