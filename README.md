@@ -8,6 +8,7 @@ Blueprint for Prometheus-based monitoring system. The following components are i
 - [Grafana - The open and composable observability and data visualization platform.](https://github.com/grafana/grafana)
 - [Alertmanager - Prometheus Alertmanager.](https://github.com/prometheus/alertmanager)
 - [karma - Alert dashboard for Prometheus Alertmanager.](https://github.com/prymitive/karma)
+- [Node exporter - Exporter for machine metrics.](https://github.com/prometheus/node_exporter)
 
 ## Usage
 
@@ -71,6 +72,10 @@ Blueprint for Prometheus-based monitoring system. The following components are i
      - job_name: "karma"
        static_configs:
          - targets: ["karma:8080"]
+
+     - job_name: "node_exporter"
+       static_configs:
+         - targets: ["host.docker.internal:9100"]
    ```
 
 1. (Optional) Load rules in the [rules](https://github.com/rea1shane/monitor/tree/main/rules) folder:
