@@ -5,10 +5,8 @@ services:
     container_name: prometheus
     image: prom/prometheus:latest
     command:
-      [
-        "--config.file=/etc/prometheus/prometheus.yml",
-        "--web.enable-lifecycle"
-      ]
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--web.enable-lifecycle"
     volumes:
       - $MONITOR_WORKSPACE/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
@@ -23,7 +21,8 @@ services:
   blackbox_exporter:
     container_name: blackbox_exporter
     image: quay.io/prometheus/blackbox-exporter:latest
-    command: [ "--config.file=/etc/blackbox_exporter/blackbox.yml" ]
+    command:
+      - "--config.file=/etc/blackbox_exporter/blackbox.yml"
     volumes:
       - $MONITOR_WORKSPACE/blackbox_exporter/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
     ports:
@@ -31,8 +30,9 @@ services:
 
   grafana:
     container_name: grafana
-    command: [ "--config=/etc/grafana/grafana.ini" ]
     image: grafana/grafana-oss:latest
+    command:
+      - "--config=/etc/grafana/grafana.ini"
     volumes:
       - $MONITOR_WORKSPACE/grafana/grafana.ini:/etc/grafana/grafana.ini
     ports:
@@ -41,7 +41,8 @@ services:
   alertmanager:
     container_name: alertmanager
     image: quay.io/prometheus/alertmanager:latest
-    command: [ "--config.file=/etc/alertmanager/alertmanager.yml" ]
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
     volumes:
       - $MONITOR_WORKSPACE/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
