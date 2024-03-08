@@ -130,5 +130,6 @@ Here are some shared dashboards:
 - [Blackbox Exporter (HTTP prober) | Grafana Labs](https://grafana.com/grafana/dashboards/13659-blackbox-exporter-http-prober/)
 - [Grafana Internals | Grafana Labs](https://grafana.com/grafana/dashboards/3590-grafana-internals/)
 - [Alertmanager | Grafana Labs](https://grafana.com/grafana/dashboards/9578-alertmanager/)
+- [Node Exporter Full | Grafana Labs](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
 
 More shared dashboards: [Dashboards | Grafana Labs](https://grafana.com/grafana/dashboards/)
