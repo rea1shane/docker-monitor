@@ -7,7 +7,6 @@ Blueprint for Prometheus-based monitoring system. The following components are i
 - [Blackbox exporter - Blackbox prober exporter.](https://github.com/prometheus/blackbox_exporter)
 - [Grafana - The open and composable observability and data visualization platform.](https://github.com/grafana/grafana)
 - [Alertmanager - Prometheus Alertmanager.](https://github.com/prometheus/alertmanager)
-- [karma - Alert dashboard for Prometheus Alertmanager.](https://github.com/prymitive/karma)
 - [Node exporter - Exporter for machine metrics.](https://github.com/prometheus/node_exporter)
 
 ## Usage
@@ -68,10 +67,6 @@ Blueprint for Prometheus-based monitoring system. The following components are i
      - job_name: "grafana"
        static_configs:
          - targets: ["grafana:3000"]
-
-     - job_name: "karma"
-       static_configs:
-         - targets: ["karma:8080"]
 
      - job_name: "node_exporter"
        static_configs:

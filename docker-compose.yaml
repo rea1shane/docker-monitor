@@ -22,7 +22,7 @@ services:
 
   blackbox_exporter:
     container_name: blackbox_exporter
-    image: quay.io/prometheus/blackbox-exporter:latest
+    image: prom/blackbox-exporter:latest
     command:
       - "--config.file=/etc/blackbox_exporter/blackbox.yml"
     volumes:
@@ -44,7 +44,7 @@ services:
 
   alertmanager:
     container_name: alertmanager
-    image: quay.io/prometheus/alertmanager:latest
+    image: prom/alertmanager:latest
     command:
       - "--config.file=/etc/alertmanager/alertmanager.yml"
     volumes:
@@ -53,18 +53,10 @@ services:
       - 9093:9093
     restart: unless-stopped
 
-  karma:
-    container_name: karma
-    image: ghcr.io/prymitive/karma:latest
-    environment:
-      - ALERTMANAGER_URI=http://alertmanager:9093
-    ports:
-      - 8080:8080
-    restart: unless-stopped
-
+  # https://github.com/prometheus/node_exporter?tab=readme-ov-file#docker
   node_exporter:
     container_name: node_exporter
-    image: quay.io/prometheus/node-exporter:latest
+    image: prom/node-exporter:latest
     command:
       - "--path.rootfs=/host"
     network_mode: host
