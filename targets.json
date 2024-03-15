@@ -1,0 +1,50 @@
+[
+    {
+        "targets": [
+            "localhost:9090"
+        ],
+        "labels": {
+            "job": "prometheus"
+        }
+    },
+    {
+        "targets": [
+            "pushgateway:9091"
+        ],
+        "labels": {
+            "job": "pushgateway"
+        }
+    },
+    {
+        "targets": [
+            "alertmanager:9093"
+        ],
+        "labels": {
+            "job": "alertmanager"
+        }
+    },
+    {
+        "targets": [
+            "blackbox_exporter:9115"
+        ],
+        "labels": {
+            "job": "blackbox_exporter"
+        }
+    },
+    {
+        "targets": [
+            "grafana:3000"
+        ],
+        "labels": {
+            "job": "grafana"
+        }
+    },
+    {
+        "targets": [
+            "host.docker.internal:9100"
+        ],
+        "labels": {
+            "job": "node_exporter"
+        }
+    }
+]

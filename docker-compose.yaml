@@ -9,6 +9,7 @@ services:
       - "--web.enable-lifecycle"
     volumes:
       - $MONITOR_WORKSPACE/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./targets.json:/etc/prometheus/targets.json
     ports:
       - 9090:9090
     restart: unless-stopped

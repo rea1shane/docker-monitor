@@ -48,29 +48,11 @@ Blueprint for Prometheus-based monitoring system. The following components are i
 
    ```yaml
    scrape_configs:
-     - job_name: "prometheus"
-       static_configs:
-         - targets: ["localhost:9090"]
-
-     - job_name: "pushgateway"
-       static_configs:
-         - targets: ["pushgateway:9091"]
-
-     - job_name: "alertmanager"
-       static_configs:
-         - targets: ["alertmanager:9093"]
-
-     - job_name: "blackbox_exporter"
-       static_configs:
-         - targets: ["blackbox_exporter:9115"]
-
-     - job_name: "grafana"
-       static_configs:
-         - targets: ["grafana:3000"]
-
-     - job_name: "node_exporter"
-       static_configs:
-         - targets: ["host.docker.internal:9100"]
+     - job_name: "file_ds"
+       file_sd_configs:
+         - refresh_interval: 5m
+           files:
+             - /etc/prometheus/targets.json
    ```
 
 1. (Optional) Load rules in the [rules](https://github.com/rea1shane/monitor/tree/main/rules) folder:
