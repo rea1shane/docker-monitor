@@ -63,8 +63,7 @@ Blueprint for Prometheus-based monitoring system. The following components are i
       services:
         prometheus:
           volumes:
-            - $MONITOR_WORKSPACE/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-            - ./rules:/etc/prometheus/rules
+            - ./rules:/etc/prometheus/rules # Add this line
       ```
 
    1. Edit `$MONITOR_WORKSPACE/prometheus/prometheus.yml`, make Prometheus load rules:
